@@ -1,0 +1,22 @@
+{
+  "name": "salesforce convert 15 to 18",
+  "version": "0.1.0",
+  "description": "beer for developers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [
+    "node",
+    "heroku"
+  ],
+  "license": "MIT"
+}
