@@ -33,15 +33,18 @@ var bad = function(res){
 }
 
 var convert = function(id){
-  var str = [0,0,0];
-  for(var i = 0; i < id.length; i++){
-    var c = id.charCodeAt(i);
-    str[parseInt(i/5)]+=((c >= 65 && c <=90)? 1 : 0)*Math.pow(2,parseInt(i%5));
-
-  }
+  var j=0,i=0;
   var caseCode = '';
-  for(var c in str){
-    caseCode+=String.fromCharCode(str[c]<25 ? 65 + str[c]:22+str[c]);
+  
+  for(j;j<3;j++){
+    var f = 0;
+    for(var i = 0; i < 5; i++){
+      var c = id.charCodeAt(j*5+i);
+      if(c >= 65 && c <=90){
+        f += 1 << i;
+      }
+    }
+    caseCode+=String.fromCharCode(f+(f<26?65:22));
   }
   
   return id+caseCode;
