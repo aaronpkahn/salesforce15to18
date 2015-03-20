@@ -3,12 +3,22 @@ var url = require('url');
 var port = (process.env.PORT || 8092);
 
 var server = http.createServer(function(req,res){
-  var query = url.parse(req.url,true).query;
+  var urlObj = url.parse(req.url,true);
+  var pathname = urlObj.pathname;
+  var query = urlObj.query;
+  
+  //try to match id in pathname ex. http://salesforce15to18.herokuapp.com/a0p300000082PED
+  if(pathname){
+    var m = pathname.match(/^\/([A-Za-z0-9]{15})$/);
+    if(m){
+      res.end(convert(m[1]));
+      return;
+    }
+  }
 
-  console.log(query);
-  
   if(!query) return bad(res);
-  
+
+  //try to get id from querystring
   var id = query.id;
   if(!id || id.length != 15) return bad(res);
   
