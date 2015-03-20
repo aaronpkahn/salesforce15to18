@@ -26,7 +26,7 @@ var convert = function(id){
   var str = [0,0,0];
   for(var i = 0; i < id.length; i++){
     var c = id.charCodeAt(i);
-    str[parseInt(i/5)]+=((c >= 65 && c <=90)? 1 : 0)*Math.pow(2,parseInt(i/5));
+    str[parseInt(i/5)]+=((c >= 65 && c <=90)? 1 : 0)*Math.pow(2,parseInt(i%5));
 
   }
   var caseCode = '';
